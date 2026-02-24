@@ -1,28 +1,70 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.HashSet;
 
-public class Student extends Person implements Validatable, Tuition {
-    private int studentID;
-    private Academic level;
+public abstract class Student extends Person{
+    private int studentId;
     private String major;
     private double GPA;
 
-    private Map<Course, Course> courses = new HashMap<>();
+    private Map<Course, Double> courses = new HashMap<>();
 
-    private static final double flatRate = 5000.0;
-    private static final double perCreditRate = 300.0;
-    private static final double researchFee = 1000.0;
+   
 
-    Student(int studentID,String name, int age, Academic level, String major, double GPA) {
-        super(name, age);
-        this.studentID = studentID;
-        this.level = level;
+    Student(String name, int studentId, String major, double GPA){
+        super(name);
+        this.studentId = studentId;
         this.major = major;
         this.GPA = GPA;
     }
 
+    public int getStudentId(){
+        return studentId;
+    }
+    public String major(){
+        return major;
+    }
+    public double GPA(){
+        return GPA;
+    }
 
+
+
+    public void setStudentID(int id){
+        this.studentId = id;
+    }
+    public void setMajor(String major){
+        this.major = major;
+    }
+    public void setGPA(double GPA){
+        if (GPA < 0.0 || GPA > 4.0){
+            throw new IllegalArgumentException("Invalid GPA");
+        }
+        this.GPA = GPA;
+    }
+    
+
+    public void enroll(Course course){
+        courses.putIfAbsent(course, 0.0);
+    }
+
+    public void assignGrade(Course course, double grade){
+        courses.put(course, grade);
+    }
+
+    public double getGrade (Course course){
+        return courses.getOrDefault(course, 0.0);
+    }
+
+
+    public abstract double calculateTuition();
+
+    @Override
+    public String getLevel(){
+        return "Student";
+    }
 
 }
+
+
+    
+
