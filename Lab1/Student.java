@@ -43,11 +43,11 @@ public abstract class Student extends Person{
     }
     
 
-    public void enroll(Course course){
+    public void Attendance(Course course, Integer attendance){
         courses.putIfAbsent(course, 0.0);
     }
 
-    public void assignGrade(Course course, double grade){
+    public void Grades(Course course, double grade){
         courses.put(course, grade);
     }
 
