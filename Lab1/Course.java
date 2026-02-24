@@ -1,52 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Course {
-    private String courseName;
+
     private String courseCode;
-    private Instructor instructor;
+    private String title;
     private double credits;
-    private Student[] students;
 
-    // constructor
-    public Course(String courseName, String courseCode, Instructor instructor, double credits, Student[]
-        students) {
-            this.courseName = courseName;
-            this.courseCode = courseCode;
-            this.instructor = instructor;
-            this.credits = credits;
-            this.students = students;
+    private List<Student> roster = new ArrayList<>();
+
+
+    Course(String courseCode, String title, double credits){
+        this.courseCode = courseCode;
+        this.title = title;
+        this.credits = credits;
+    }
+
+    public void addStudent(Student student){
+        if (!roster.contains(student)){
+            roster.add(student);
+            student.enroll(this);
         }
-    
-    // getters and setters
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;     
-    }
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;     
-    }
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;     
-    }
-    public void setCredits(double credits) {
-        this.credits = credits;     
-    }
-    public void setStudents(Student[] students) {
-        this.students = students;     
     }
 
+    public List<Student> getRoster(){
+        return roster;
+    }
 
-    public String getCourseName() {
-        return courseName;     
+    @Override
+    public String toString(){
+        return courseCode + " | " + title + " | " + credits + " credits.";
     }
-    public String getCourseCode() {
-        return courseCode;     
-    }
-    public Instructor getInstructor() {
-        return instructor;     
-    }
-    public double getCredits() {
-        return credits;     
-    }
-    public Student[] getStudents() {
-        return students;     
-    }
-    
+
 }
