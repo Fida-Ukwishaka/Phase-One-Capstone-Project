@@ -19,7 +19,7 @@ public class Course {
     public void addStudent(Student student){
         if (!roster.contains(student)){
             roster.add(student);
-            student.enroll(this);
+            
         }
     }
 
