@@ -1,29 +1,24 @@
-public class Instructor extends Person {
+public class Instructor extends Person{
 
     private String department;
 
-
-    Instructor(String name, int age,  String department) {
-        super(name, age);
+    Instructor(String name, String department){
+        super(name);
         this.department = department;
     }
 
-
-    public String getDepartment() {
+    public String department(){
         return department;
     }
 
 
-    public void setDepartment(String department) {
+    public void setDepartment(String department){
         this.department = department;
     }
 
-
     @Override
-    public String getAcademicLevel(){
+    public String getLevel(){
         return "Instructor";
     }
-
-    
     
 }
