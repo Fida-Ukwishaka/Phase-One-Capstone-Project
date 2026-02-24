@@ -2,7 +2,7 @@ public class Instructor extends Person{
 
     private String department;
 
-    Instructor(String name, String department){
+    public Instructor(String name, String department){
         super(name);
         this.department = department;
     }
@@ -17,8 +17,13 @@ public class Instructor extends Person{
     }
 
     @Override
-    public String getLevel(){
-        return "Instructor";
+    public double calculateTuition() {
+        return 0; // instructors don't pay tuition
+    }
+
+    @Override
+    public String toString(){
+        return name + " | " + department;
     }
     
 }
